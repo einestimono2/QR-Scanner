@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="neutral">#FF161616</color>
+    <color name="neutral3">#FFBABABA</color>
+    <color name="neutral4">#E7E7E7</color>
+    <color name="dotDefault">#E7E7E7</color>
+    <color name="primary">#3BB868</color>
+    <color name="primaryOutline">#EFFCF4</color>
+    <color name="ads">#1EA67D</color>
 </resources>

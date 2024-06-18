@@ -1,3 +1,30 @@
 <resources>
-    <string name="app_name">Tranning QR Scanner</string>
+    <string name="app_name">QR Code Scanner</string>
+    <string name="app_icon_contentDescription">Tranning QR Scanner</string>
+
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="start">Start</string>
+
+    <string name="default_contentDescription">Image</string>
+
+    <string name="splash_activity_note">This action maybe contains ads</string>
+
+    <string name="language_activity_title">Languages</string>
+
+    <string name="intro_activity_title1">QR &amp; Barcode Scanner</string>
+    <string name="intro_activity_content1">Scan unlimited QR codes and barcodes exactly!</string>
+    <string name="intro_activity_title2">Ceate QR Code</string>
+    <string name="intro_activity_content2">Support for links, business card, wifi, event,....</string>
+    <string name="intro_activity_title3">Customize Style QR</string>
+    <string name="intro_activity_content3">Style your QR codes to suit your needs.</string>
+
+    <string name="nav_scan">Scan</string>
+
+    <string name="nav_create">Create</string>
+
+    <string name="nav_history">History</string>
+
+    <string name="nav_settings">Settings</string>
+
 </resources>
