@@ -1,17 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.scan_qr.presentation.view.ScanQRFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.scan_qr.ScanQRFragment"
 >
 
-    <TextView
+    <androidx.camera.view.PreviewView
+        android:id="@+id/scanQRFrag_cam_preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Scan QR Screen"
-        tools:ignore="HardcodedText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
     />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/scanQRFrag_zoom_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/default_zoom_level"
+        android:textSize="13sp"
+        android:fontFamily="@font/inter_600_semi_bold"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_zoom_level"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+    />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/scan_tutorial"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/scanQRFrag_boundary_view"
+        android:fontFamily="@font/inter_400_regular"
+        android:textSize="14sp"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/white"
+    />
+
+    <FrameLayout
+        android:id="@+id/scanQRFrag_boundary_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/qr_scan_boundary"
+    />
+
+    <!--    <com.example.tranning_qr_scanner.core.view.CustomRectangleWithCornersCutoutView-->
+    <!--        android:layout_width="280dp"-->
+    <!--        android:layout_height="280dp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--    />-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginHorizontal="21dp"
+        android:layout_marginBottom="52dp"
+    >
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/scanQRFrag_btn_Gallery"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:backgroundTint="@color/scanOption"
+            app:icon="@drawable/ic_gallery"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="24dp"
+        />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_scan_mode"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/scanQRFrag_btn_Gallery"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/scanQRFrag_btn_flashlight"
+            app:tabMode="auto"
+            app:tabGravity="fill"
+            app:tabIndicator="@drawable/rounded_tab_layout_indicator"
+            app:tabIndicatorFullWidth="true"
+            app:tabIndicatorGravity="stretch"
+            app:tabIndicatorColor="@color/white"
+            app:tabInlineLabel="true"
+            app:tabTextColor="@drawable/black_white_selector"
+            app:tabIconTint="@drawable/black_white_selector"
+        >
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/scan_single"
+                android:icon="@drawable/ic_scan_single"
+            />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/scan_batch"
+                android:icon="@drawable/ic_scan_batch"
+            />
+        </com.google.android.material.tabs.TabLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/scanQRFrag_btn_flashlight"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:backgroundTint="@color/scanOption"
+            app:icon="@drawable/ic_flashlight"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="24dp"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

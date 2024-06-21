@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.home.TutorialScanBSDFragment"
+    android:backgroundTint="@android:color/transparent"
+>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="24dp"
+        android:background="@drawable/bg_dialog_no_permission"
+    >
+        <TextView
+            android:id="@+id/tutorialScan_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:fontFamily="@font/inter_700_bold"
+            android:textSize="20sp"
+            android:text="@string/scan_tutorial_title"
+            android:textColor="@color/black"
+        />
+
+        <TextView
+            android:id="@+id/tutorialScan_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tutorialScan_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:fontFamily="@font/inter_400_regular"
+            android:textSize="14sp"
+            android:text="@string/scan_tutorial_content"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/black"
+        />
+
+        <ImageView
+            android:id="@+id/tutorialScan_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_tutorial_scan"
+            app:layout_constraintTop_toBottomOf="@id/tutorialScan_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/default_contentDescription"
+        />
+
+        <Button
+            android:id="@+id/tutorialScan_btnGotIt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/got_it"
+            android:backgroundTint="@color/primary"
+            app:layout_constraintTop_toBottomOf="@id/tutorialScan_image"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/inter_700_bold"
+            android:textSize="16sp"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

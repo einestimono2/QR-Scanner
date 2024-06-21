@@ -2,8 +2,11 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 
-    /* MY_CUSTOM: binding */
+    /* MY_CUSTOM: binding, Dagger Hilt */
     id("kotlin-kapt")
+
+    /* MY_CUSTOM: Dagger Hilt */
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -55,6 +58,11 @@ dependencies {
     /* MY_CUSTOM: Qrcode & barcodes */
     implementation("com.google.mlkit:barcode-scanning:17.2.0")
 
+    /* MY_CUSTOM: CameraX */
+    implementation("androidx.camera:camera-camera2:1.3.4")
+    implementation("androidx.camera:camera-lifecycle:1.3.4")
+    implementation("androidx.camera:camera-view:1.3.4")
+
     /* MY_CUSTOM: Navigation */
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
@@ -64,5 +72,21 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.9.0")
 
     /* MY_CUSTOM: ViewModel */
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2")
+
+    /* MY_CUSTOM: Dagger Hilt */
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+
+    /* MY_CUSTOM: Glide */
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+
+    /* MY_CUSTOM: Timber Logging*/
+    implementation("com.jakewharton.timber:timber:5.0.1")
+}
+
+/* MY_CUSTOM: Dagger Hilt */
+kapt {
+    correctErrorTypes = true
 }

@@ -4,4 +4,66 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-/>
+    app:startDestination="@id/splashFragment"
+>
+    <!--Splash-->
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.tranning_qr_scanner.presentation.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/splash__fragment"
+    >
+        <action
+            android:id="@+id/action_splashFragment_to_languageFragment"
+            app:destination="@id/languageFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
+        />
+
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
+        />
+    </fragment>
+
+    <!--Language-->
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="com.example.tranning_qr_scanner.presentation.language.LanguageFragment"
+        android:label="LanguageFragment"
+        tools:layout="@layout/language__fragment"
+    >
+        <action
+            android:id="@+id/action_languageFragment_to_introFragment"
+            app:destination="@id/introFragment"
+            app:popUpTo="@id/languageFragment"
+            app:popUpToInclusive="true"
+        />
+    </fragment>
+
+    <!--Intro-->
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="com.example.tranning_qr_scanner.presentation.intro.IntroFragment"
+        android:label="IntroFragment"
+        tools:layout="@layout/intro__fragment"
+    >
+        <action
+            android:id="@+id/action_introFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/introFragment"
+            app:popUpToInclusive="true"
+        />
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.tranning_qr_scanner.presentation.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/home__fragment"
+    />
+
+    <!--    <include app:graph="@navigation/home_nav"/>-->
+</navigation>
