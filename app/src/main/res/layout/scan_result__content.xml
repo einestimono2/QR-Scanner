@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+	<data>
+		<variable
+				name="barcode"
+				type="com.example.tranning_qr_scanner.data.model.barcode.BarcodeModel"/>
+	</data>
+	
+	<androidx.constraintlayout.widget.ConstraintLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			xmlns:app="http://schemas.android.com/apk/res-auto"
+	>
+		<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/scanResultContent_typeContainer"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				android:padding="16dp"
+		>
+			<ImageView
+					android:id="@+id/scanResultContent_icon"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					android:src="@drawable/ic_scan_result_website"
+					android:contentDescription="@string/default_contentDescription"
+			/>
+			
+			<LinearLayout
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toEndOf="@id/scanResultContent_icon"
+					android:orientation="vertical"
+					android:layout_marginStart="16dp"
+					app:layout_constraintEnd_toEndOf="parent">
+				
+				<TextView
+						android:id="@+id/scanResultContent_type"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/website"
+						android:fontFamily="@font/inter_700_bold"
+						android:textSize="16sp"
+				/>
+				<TextView
+						android:id="@+id/scanResultContent_description"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="http://mvot.vn/qrcode"
+						android:fontFamily="@font/inter_500_medium"
+						android:textSize="14sp"
+						tools:ignore="HardcodedText"
+						android:visibility="gone"
+				/>
+			</LinearLayout>
+		</androidx.constraintlayout.widget.ConstraintLayout>
+		
+		<LinearLayout
+				android:id="@+id/scanResultContent_contentContainer"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintBottom_toTopOf="@id/scanResultContent_actions"
+				app:layout_constraintTop_toBottomOf="@id/scanResultContent_typeContainer"
+				android:orientation="vertical"
+				android:layout_marginHorizontal="16dp"
+				android:layout_marginTop="16dp"
+				android:visibility="visible"
+		>
+		</LinearLayout>
+		
+		<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/scanResultContent_actions"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/scanResultContent_contentContainer"
+				android:layout_marginTop="32dp"
+				android:layout_marginHorizontal="16dp"
+		/>
+	
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

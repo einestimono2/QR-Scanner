@@ -7,6 +7,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.tranning_qr_scanner.core.utils.DialogUtils
+import com.example.tranning_qr_scanner.core.utils.Utilities
 
 class PermissionHelper {
     companion object {
@@ -25,7 +27,14 @@ class PermissionHelper {
                     ActivityResultContracts.RequestPermission()
                 ) {
                     if (!it) {
-                        onDeny()
+                        DialogUtils.noPermissionDialog(
+                            context,
+                            onDeny = {
+                                onDeny()
+                            }, onAllow = {
+                                Utilities.openAppSettings(context)
+                            }
+                        )
                     }
                 }
 

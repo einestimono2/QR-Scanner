@@ -8,4 +8,6 @@ object Constants {
     const val FIRST_TIME_SCAN_BATCH_RESULT_KEY = "first_time_scan_batch_result"
 
     const val CURRENT_LANGUAGE_KEY = "qr_scanner_current_language"
+
+    const val SCAN_RESULT_ACTION_MAX_SPAN_COUNT = 4
 }

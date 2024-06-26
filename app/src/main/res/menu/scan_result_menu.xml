@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+            android:id="@+id/scanResult_favorite"
+            android:icon="@drawable/ic_favorite"
+            android:title="@string/favorite"
+            app:showAsAction="ifRoom"
+    />
+    <item
+            android:id="@+id/scanResult_scan"
+            android:icon="@drawable/ic_scan_single_white"
+            android:title="@string/scan_single"
+            app:showAsAction="always"
+    />
+</menu>

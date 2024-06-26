@@ -1,44 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/home_nav"
-    app:startDestination="@id/scanQRFragment"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:id="@+id/home_nav"
+		app:startDestination="@id/scanQRFragment"
 >
-    <fragment
-        android:id="@+id/createQRFragment"
-        android:name="com.example.tranning_qr_scanner.presentation.create_qr.CreateQRFragment"
-        android:label="create_qr__fragment"
-        tools:layout="@layout/create_qr__fragment"
-    />
-
-    <fragment
-        android:id="@+id/historyFragment"
-        android:name="com.example.tranning_qr_scanner.presentation.history.HistoryFragment"
-        android:label="history__fragment"
-        tools:layout="@layout/history__fragment"
-    />
-
-    <fragment
-        android:id="@+id/scanQRFragment"
-        android:name="com.example.tranning_qr_scanner.presentation.scan_qr.ScanQRFragment"
-        android:label="scan_qr__fragment"
-        tools:layout="@layout/scan_qr__fragment"
-    />
-
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.example.tranning_qr_scanner.presentation.settings.SettingsFragment"
-        android:label="settings__fragment"
-        tools:layout="@layout/settings__fragment"
-    />
-
-    <fragment
-        android:id="@+id/noPermissionFragment"
-        android:name="com.example.tranning_qr_scanner.presentation.home.NoPermissionFragment"
-        android:label="no_permission__fragment"
-        tools:layout="@layout/no_permission__fragment"
-    />
+	<fragment
+			android:id="@+id/createQRFragment"
+			android:name="com.example.tranning_qr_scanner.presentation.create_qr.CreateQRFragment"
+			android:label="create_qr__fragment"
+			tools:layout="@layout/create_qr__fragment"
+	/>
+	
+	<fragment
+			android:id="@+id/historyFragment"
+			android:name="com.example.tranning_qr_scanner.presentation.history.HistoryFragment"
+			android:label="history__fragment"
+			tools:layout="@layout/history__fragment"
+	/>
+	
+	<fragment
+			android:id="@+id/scanQRFragment"
+			android:name="com.example.tranning_qr_scanner.presentation.scan_qr.ScanQRFragment"
+			android:label="scan_qr__fragment"
+			tools:layout="@layout/scan_qr__fragment"
+	>
+		<action
+				android:id="@+id/action_scanQRFragment_to_scanResultFragment"
+				app:destination="@id/scanResultFragment"
+		>
+			<argument
+					app:argType="com.example.tranning_qr_scanner.data.model.barcode.BarcodeModel"
+					android:name="barcode"
+			/>
+		</action>
+	</fragment>
+	
+	<fragment
+			android:id="@+id/settingsFragment"
+			android:name="com.example.tranning_qr_scanner.presentation.settings.SettingsFragment"
+			android:label="settings__fragment"
+			tools:layout="@layout/settings__fragment"
+	/>
+	
+	<fragment
+			android:id="@+id/noPermissionFragment"
+			android:name="com.example.tranning_qr_scanner.presentation.home.NoPermissionFragment"
+			android:label="no_permission__fragment"
+			tools:layout="@layout/no_permission__fragment"
+	/>
+	
+	<fragment
+			android:id="@+id/scanResultFragment"
+			android:name="com.example.tranning_qr_scanner.presentation.scan_result.ScanResultFragment"
+			android:label="scan_result__fragment"
+			tools:layout="@layout/scan_result__fragment"
+	>
+		<argument
+				android:name="barcode"
+				app:argType="com.example.tranning_qr_scanner.data.model.barcode.BarcodeModel"
+		/>
+	</fragment>
 
 </navigation>

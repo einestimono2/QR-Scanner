@@ -9,11 +9,13 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, Nothing>() {
 
     override fun bind() {
         binding.homeFragNav.setOnItemSelectedListener { item ->
-            when(item.itemId){
-                R.id.nav_scan -> navigate(R.id.scanQRFragment, true)
-                R.id.nav_create -> navigate(R.id.createQRFragment, true)
-                R.id.nav_history -> navigate(R.id.historyFragment, true)
-                R.id.nav_settings -> navigate(R.id.settingsFragment, true)
+            if(item.itemId == navController.currentDestination?.id){
+                when(item.itemId){
+                    R.id.nav_scan -> navigate(R.id.scanQRFragment, true)
+                    R.id.nav_create -> navigate(R.id.createQRFragment, true)
+                    R.id.nav_history -> navigate(R.id.historyFragment, true)
+                    R.id.nav_settings -> navigate(R.id.settingsFragment, true)
+                }
             }
             true
         }

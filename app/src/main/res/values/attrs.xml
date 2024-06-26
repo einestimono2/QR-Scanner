@@ -10,8 +10,4 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="TabItemHorizontal">
-        <attr name="android:text"/>
-        <attr name="android:icon"/>
-    </declare-styleable>
 </resources>

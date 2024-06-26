@@ -7,11 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tranning_qr_scanner.databinding.IntroItemBinding
 import com.example.tranning_qr_scanner.data.model.IntroModel
 
-class IntroAdapter(
-    private val listIntro: List<IntroModel>,
-    private val context: Context
-) : RecyclerView.Adapter<IntroAdapter.IntroViewHolder>() {
+class IntroAdapter(private val listIntro: List<IntroModel>) : RecyclerView.Adapter<IntroAdapter.IntroViewHolder>() {
+    private lateinit var context: Context
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IntroViewHolder {
+        context = parent.context
+
         val itemBinding = IntroItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return IntroViewHolder(itemBinding)
     }

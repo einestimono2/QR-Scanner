@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.example.tranning_qr_scanner.R
@@ -22,7 +22,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel> : Fragment() {
     open val viewModelClass: Class<VM>? = null
     open val transitionType: TransitionType = TransitionType.RTL
 
-    private lateinit var navController: NavController
+    protected lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,7 +52,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel> : Fragment() {
 
     abstract fun inflateLayout(): VB
 
-    fun navigate(id: Int, replace: Boolean = false) {
+    fun navigate(id: Int, replace: Boolean = false, args: Bundle? = null) {
         val builder = NavOptions.Builder().apply {
             if (replace) setPopUpTo(navController.currentDestination!!.id, false)
             setEnterAnim(getEnterAnim())
@@ -63,7 +63,22 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel> : Fragment() {
 
         navController.navigate(
             id,
-            null,
+            args,
+            builder.build()
+        )
+    }
+
+    fun navigate(action: NavDirections, replace: Boolean = false) {
+        val builder = NavOptions.Builder().apply {
+            if (replace) setPopUpTo(navController.currentDestination!!.id, false)
+            setEnterAnim(getEnterAnim())
+            setExitAnim(0)
+            setPopEnterAnim(getExitAnim())
+            setPopExitAnim(0)
+        }
+
+        navController.navigate(
+            action,
             builder.build()
         )
     }

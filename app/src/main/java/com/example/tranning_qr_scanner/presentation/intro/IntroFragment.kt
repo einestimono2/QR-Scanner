@@ -33,7 +33,7 @@ class IntroFragment : BaseFragment<IntroFragmentBinding, Nothing>() {
         btnSkip = binding.introFragBtnSkip
 
         /* Adapter */
-        viewPager.adapter = IntroAdapter(IntroModel.LIST_INTRO, requireContext())
+        viewPager.adapter = IntroAdapter(IntroModel.LIST_INTRO)
 
         /* Indicator */
         initIndicator(IntroModel.LIST_INTRO.size)

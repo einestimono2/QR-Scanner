@@ -2,8 +2,11 @@ package com.example.tranning_qr_scanner.presentation.scan_qr
 
 import android.annotation.SuppressLint
 import android.net.Uri
+import android.os.Bundle
 import android.util.Size
 import android.view.ScaleGestureDetector
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
@@ -14,23 +17,24 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.example.tranning_qr_scanner.R
 import com.example.tranning_qr_scanner.core.utils.Constants
+import com.example.tranning_qr_scanner.core.utils.Mappers
+import com.example.tranning_qr_scanner.core.utils.Utilities
 import com.example.tranning_qr_scanner.core.utils.extension.shortToast
+import com.example.tranning_qr_scanner.core.utils.helper.AppCache
 import com.example.tranning_qr_scanner.core.utils.helper.PermissionHelper
 import com.example.tranning_qr_scanner.databinding.ScanQrFragmentBinding
 import com.example.tranning_qr_scanner.presentation.base.BaseFragment
+import com.example.tranning_qr_scanner.presentation.home.TutorialScanBSDFragment
 import com.google.common.util.concurrent.ListenableFuture
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.util.concurrent.ExecutionException
-import com.example.tranning_qr_scanner.core.utils.DialogUtils
-import com.example.tranning_qr_scanner.core.utils.helper.AppCache
-import com.example.tranning_qr_scanner.presentation.home.TutorialScanBSDFragment
-import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -47,7 +51,9 @@ class ScanQRFragment : BaseFragment<ScanQrFragmentBinding, Nothing>() {
     lateinit var appCache: AppCache
 
     override fun bind() {
-        requestPermission()
+        PermissionHelper.requestCameraPermission(requireContext(), this) {
+            navigate(R.id.noPermissionFragment, true)
+        }
 
         /**/
         mCameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
@@ -59,27 +65,22 @@ class ScanQRFragment : BaseFragment<ScanQrFragmentBinding, Nothing>() {
     override fun onResume() {
         super.onResume()
 
-        if (PermissionHelper.isCameraPermissionGranted(requireContext())) {
-            if (appCache.readValue(Constants.FIRST_TIME_TUTORIAL_SCAN_QR_KEY) == null) {
-                TutorialScanBSDFragment.show(parentFragmentManager)
-            }
-
-            setupCamera()
-        }
-    }
-
-    private fun requestPermission() {
-        PermissionHelper.requestCameraPermission(requireContext(), this) {
-            DialogUtils.noPermissionDialog(
-                requireContext(),
-                onDeny = {
-                    navigate(R.id.noPermissionFragment, true)
-                },
-                onAllow = {
-                    // TODO: Request again
-                    requestPermission()
-                }
+        binding.scanQRFragZoomLevel.text = getString(R.string.default_zoom_level)
+        binding.scanQRFragBtnFlashlight.setBackgroundColor(
+            ContextCompat.getColor(
+                this.requireContext(),
+                R.color.scanOption
             )
+        )
+
+        if (PermissionHelper.isCameraPermissionGranted(requireContext())) {
+            if (appCache.readValue(Constants.FIRST_TIME_TUTORIAL_SCAN_QR_KEY) != null) {
+                TutorialScanBSDFragment.show(parentFragmentManager) {
+                    setupCamera()
+                }
+            } else {
+                setupCamera()
+            }
         }
     }
 
@@ -101,15 +102,16 @@ class ScanQRFragment : BaseFragment<ScanQrFragmentBinding, Nothing>() {
     @OptIn(ExperimentalGetImage::class)
     private fun processScan() {
         val preview = Preview.Builder().build()
-        val imageAnalysis = ImageAnalysis.Builder().setTargetResolution(Size(1280, 720))
+        val imageAnalysis = ImageAnalysis.Builder()
+//            .setTargetResolution(Size(720, 1280))
             .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST).build()
 
         imageAnalysis.setAnalyzer(ContextCompat.getMainExecutor(requireContext())) { imageProxy: ImageProxy ->
             val image = InputImage.fromMediaImage(imageProxy.image!!, imageProxy.imageInfo.rotationDegrees)
             val options = BarcodeScannerOptions.Builder().build()
             val scanner = BarcodeScanning.getClient(options)
-            scanner.process(image)
-                .addOnSuccessListener { barcodes: List<Barcode> -> handleSuccess(barcodes) }
+
+            scanner.process(image).addOnSuccessListener { barcodes: List<Barcode> -> handleSuccess(barcodes) }
                 .addOnFailureListener { e: Exception -> handleFailure(e) }
                 .addOnCompleteListener(ContextCompat.getMainExecutor(requireContext())) {
                     imageProxy.close()
@@ -128,10 +130,7 @@ class ScanQRFragment : BaseFragment<ScanQrFragmentBinding, Nothing>() {
 
         preview.setSurfaceProvider(binding.scanQRFragCamPreview.surfaceProvider)
         mCamera = mCameraProvider?.bindToLifecycle(
-            this,
-            CameraSelector.DEFAULT_BACK_CAMERA,
-            imageAnalysis,
-            preview
+            this, CameraSelector.DEFAULT_BACK_CAMERA, imageAnalysis, preview
         )!!
 
         zoomControl()
@@ -139,18 +138,16 @@ class ScanQRFragment : BaseFragment<ScanQrFragmentBinding, Nothing>() {
     }
 
     private fun galleryControl() {
-        pickVisualMedia =
-            registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { result: Uri? ->
-                if (result != null) {
-                    // TODO: Picked image
-                }
+        pickVisualMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { result: Uri? ->
+            if (result != null) {
+                // TODO: Picked image
+                Timber.v("Developing...")
             }
+        }
 
         binding.scanQRFragBtnGallery.setOnClickListener {
             pickVisualMedia.launch(
-                PickVisualMediaRequest(
-                    ActivityResultContracts.PickVisualMedia.ImageOnly
-                )
+                PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
             )
         }
     }
@@ -159,7 +156,7 @@ class ScanQRFragment : BaseFragment<ScanQrFragmentBinding, Nothing>() {
         val maxZoom = mCamera.cameraInfo.zoomState.value!!.maxZoomRatio.toDouble()
 
         val format = DecimalFormat("0.#")
-        format.setRoundingMode(RoundingMode.DOWN);
+        format.setRoundingMode(RoundingMode.DOWN)
 
         val listener = object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
             @SuppressLint("SetTextI18n")
@@ -189,18 +186,12 @@ class ScanQRFragment : BaseFragment<ScanQrFragmentBinding, Nothing>() {
                 if (mCamera.cameraInfo.torchState.value == TorchState.OFF) {
                     mCamera.cameraControl.enableTorch(true)
                     binding.scanQRFragBtnFlashlight.setBackgroundColor(
-                        ContextCompat.getColor(
-                            this.requireContext(),
-                            com.example.tranning_qr_scanner.R.color.ads
-                        )
+                        ContextCompat.getColor(this.requireContext(), R.color.ads)
                     )
                 } else {
                     mCamera.cameraControl.enableTorch(false)
                     binding.scanQRFragBtnFlashlight.setBackgroundColor(
-                        ContextCompat.getColor(
-                            this.requireContext(),
-                            com.example.tranning_qr_scanner.R.color.scanOption
-                        )
+                        ContextCompat.getColor(this.requireContext(), R.color.scanOption)
                     )
                 }
             } else {
@@ -210,19 +201,32 @@ class ScanQRFragment : BaseFragment<ScanQrFragmentBinding, Nothing>() {
     }
 
     private fun handleSuccess(barcodes: List<Barcode>) {
-        for (barcode in barcodes) {
-            Toast.makeText(context, "Value: " + barcode.rawValue, Toast.LENGTH_SHORT).show()
+        if (barcodes.isNotEmpty()) {
+            binding.scanQRFragLoading.visibility = VISIBLE
+
+            mCameraProvider?.unbindAll()
+            Utilities.vibrate(requireContext(), 100)
+
+            sendBarcodeData(barcodes[0])
+
+            binding.scanQRFragLoading.visibility = GONE
         }
     }
 
-    private fun handleFailure(e: Exception) {
-        Toast.makeText(
-            requireContext(),
-            "Failed to scan.",
-            Toast.LENGTH_SHORT
-        ).show()
+    private fun sendBarcodeData(barcodeData: Barcode) {
+        val barcode = Mappers.barcodeToBarcodeModel(barcodeData)
 
-        e.printStackTrace()
+        // TODO: Save scan
+
+        /**/
+        val action = ScanQRFragmentDirections.actionScanQRFragmentToScanResultFragment(barcode)
+        navigate(action)
+    }
+
+    private fun handleFailure(e: Exception) {
+        Toast.makeText(requireContext(), "Failed to scan!", Toast.LENGTH_SHORT).show()
+
+        Timber.e(e.message)
     }
 
     override fun onPause() {
