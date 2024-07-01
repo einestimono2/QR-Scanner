@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-			 android:shape="rectangle">
-	<solid android:color="@color/primary"/>
-	<corners android:radius="@dimen/scan_mode_tab_radius"/>
-</shape>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+	<item
+			android:left="4dp"
+			android:right="4dp"
+	>
+		<shape android:shape="rectangle">
+			<solid android:color="@color/primary"/>
+			<corners android:radius="@dimen/create_qr_tab_radius"/>
+		</shape>
+	</item>
+</layer-list>
+		
+		<!--<shape-->
+		<!--		xmlns:android="http://schemas.android.com/apk/res/android"-->
+		<!--		android:shape="rectangle"-->
+		<!--&gt;-->
+		<!--	<solid android:color="@color/primary"/>-->
+		<!--	<corners android:radius="@dimen/create_qr_tab_radius"/>-->
+		<!--</shape>-->

@@ -18,4 +18,8 @@ class CreateQrDetailFragment : BaseFragment<CreateQrDetailFragmentBinding, Nothi
             pop()
         }
     }
+
+    companion object{
+
+    }
 }
