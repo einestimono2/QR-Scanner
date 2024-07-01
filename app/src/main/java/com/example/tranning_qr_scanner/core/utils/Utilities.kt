@@ -8,7 +8,9 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
 import android.provider.Settings
+import android.view.View
 import android.view.Window
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.impl.utils.ContextUtil.getApplicationContext
@@ -51,8 +53,19 @@ class Utilities {
             // Configure the behavior of the hidden system bars
             windowInsetsController.systemBarsBehavior =
                 WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+
             // Hide the status bar
             if (hideStatusBar) {
+                window.apply {
+                    setFlags(
+                        WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                        WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+                    )
+
+                    // Ẩn navigation bar
+                    decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
+                }
+
                 windowInsetsController.hide(WindowInsetsCompat.Type.statusBars())
             }
         }
@@ -64,7 +77,7 @@ class Utilities {
                 _url = "http://$_url"
             }
 
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(_url))
             context.startActivity(browserIntent)
         }
 

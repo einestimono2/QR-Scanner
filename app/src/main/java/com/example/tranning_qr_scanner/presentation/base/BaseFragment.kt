@@ -83,6 +83,10 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel> : Fragment() {
         )
     }
 
+    fun pop(){
+        navController.popBackStack()
+    }
+
     private fun getEnterAnim(): Int {
         return when (transitionType) {
             TransitionType.RTL -> R.anim.slide_rtl_in

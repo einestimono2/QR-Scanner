@@ -11,7 +11,10 @@
 			android:name="com.example.tranning_qr_scanner.presentation.create_qr.CreateQRFragment"
 			android:label="create_qr__fragment"
 			tools:layout="@layout/create_qr__fragment"
-	/>
+	>
+		<action android:id="@+id/action_createQRFragment_to_createQrDetailFragment"
+						app:destination="@id/createQrDetailFragment"/>
+	</fragment>
 	
 	<fragment
 			android:id="@+id/historyFragment"
@@ -60,6 +63,17 @@
 		<argument
 				android:name="barcode"
 				app:argType="com.example.tranning_qr_scanner.data.model.barcode.BarcodeModel"
+		/>
+	</fragment>
+	<fragment
+			android:id="@+id/createQrDetailFragment"
+			android:name="com.example.tranning_qr_scanner.presentation.create_qr_detail.CreateQrDetailFragment"
+			android:label="create_qr_detail__fragment"
+			tools:layout="@layout/create_qr_detail__fragment"
+	>
+		<argument
+				android:name="id"
+				app:argType="integer"
 		/>
 	</fragment>
 

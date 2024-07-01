@@ -85,6 +85,21 @@
 	<string name="show_on_map">Show on map</string>
 	
 	<string name="nav_create">Create</string>
+	<string name="create_qr_title">Create QR Code</string>
+	<string name="my_business_card">My Business Card</string>
+	<string name="personal">Personal</string>
+	<string name="email_address">Email Address</string>
+	<string name="contact_info">Contact info</string>
+	<string name="social">Social</string>
+	<string name="whatsapp">WhatsApp</string>
+	<string name="facebook">Facebook</string>
+	<string name="twitter">Twitter</string>
+	<string name="instagram">Instagram</string>
+	<string name="tiktok">Tiktok</string>
+	<string name="telegram">Telegram</string>
+	<string name="youtube">Youtube</string>
+	<string name="spotify">Spotify</string>
+	<string name="utilities">Utilities</string>
 	
 	<string name="nav_history">History</string>
 	

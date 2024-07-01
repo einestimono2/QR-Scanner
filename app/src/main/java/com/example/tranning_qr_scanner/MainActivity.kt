@@ -1,10 +1,12 @@
 package com.example.tranning_qr_scanner
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tranning_qr_scanner.core.utils.Utilities.Companion.setSystemBars
 import com.example.tranning_qr_scanner.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

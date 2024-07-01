@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		tools:context=".presentation.create_qr_detail.CreateQrDetailFragment"
+>
+	<com.google.android.material.appbar.AppBarLayout
+			android:id="@+id/createQRFrag_appBar"
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/app_bar_height"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+	>
+		<com.google.android.material.appbar.MaterialToolbar
+				app:navigationIcon="@drawable/ic_back"
+				android:id="@+id/createQRFrag_appBar_title"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				app:menu="@menu/scan_result_menu"
+				app:title="@string/create_qr_title"
+				app:titleCentered="false"
+				app:titleTextAppearance="@style/ToolbarStyleBlack"
+				android:background="@color/white"
+		/>
+	</com.google.android.material.appbar.AppBarLayout>
+	
+	<com.google.android.material.tabs.TabLayout
+			android:paddingHorizontal="16dp"
+			android:id="@+id/createQRFrag_tabs"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:tabMode="scrollable"
+			app:tabGravity="fill"
+			app:layout_constraintTop_toBottomOf="@id/createQRFrag_appBar"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:tabBackground="@color/white"
+			android:background="@color/white"
+			app:tabIndicatorFullWidth="true"
+			app:tabIndicatorGravity="stretch"
+			app:tabIndicator="@drawable/indicator_tab_layout_create_qr"
+			app:tabIndicatorColor="@color/primary"
+			app:tabTextColor="@drawable/selector_tab_create_qr"
+			app:tabPaddingBottom="10dp"
+			app:tabPaddingTop="10dp"
+			app:tabPaddingStart="26dp"
+			app:tabPaddingEnd="26dp"
+	
+	>
+		<com.google.android.material.tabs.TabItem
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="@string/email"
+		/>
+		<com.google.android.material.tabs.TabItem
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="@string/website"
+		/>
+		<com.google.android.material.tabs.TabItem
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="@string/contacts"
+		/>
+		<com.google.android.material.tabs.TabItem
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="@string/telephone"
+		/>
+		<com.google.android.material.tabs.TabItem
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="@string/message"
+		/>
+	</com.google.android.material.tabs.TabLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

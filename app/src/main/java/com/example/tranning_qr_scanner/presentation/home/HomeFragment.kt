@@ -9,7 +9,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, Nothing>() {
 
     override fun bind() {
         binding.homeFragNav.setOnItemSelectedListener { item ->
-            if(item.itemId == navController.currentDestination?.id){
+            if(item.itemId != navController.currentDestination?.id){
                 when(item.itemId){
                     R.id.nav_scan -> navigate(R.id.scanQRFragment, true)
                     R.id.nav_create -> navigate(R.id.createQRFragment, true)
