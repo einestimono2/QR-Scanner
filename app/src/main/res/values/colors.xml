@@ -8,6 +8,7 @@
     <color name="neutral4">#E7E7E7</color>
     <color name="dotDefault">#E7E7E7</color>
     <color name="primary">#3BB868</color>
+    <color name="primaryDisable">#C5EED5</color>
     <color name="primaryOutline">#EFFCF4</color>
     <color name="ads">#1EA67D</color>
     <color name="scanOption">#B3161616</color>

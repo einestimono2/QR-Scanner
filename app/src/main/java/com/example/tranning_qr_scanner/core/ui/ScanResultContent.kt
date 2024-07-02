@@ -24,9 +24,7 @@ class ScanResultContent : ConstraintLayout {
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
+        context, attrs, defStyleAttr
     )
 
     fun initContent(barcode: BarcodeModel) {
@@ -68,15 +66,11 @@ class ScanResultContent : ConstraintLayout {
         binding.scanResultContentType.text = resources.getString(R.string.email)
         binding.scanResultContentDescription.visibility = GONE
 
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.email_to)}: ${barcode.email}")
-        )
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.email_subject)}: ${barcode.subject}")
-        )
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.email_content)}: ${barcode.message}")
-        )
+        binding.scanResultContentContentContainer.apply {
+            addView(makeSpanTextView("${resources.getString(R.string.email_to)}: ${barcode.email}"))
+            addView(makeSpanTextView("${resources.getString(R.string.email_subject)}: ${barcode.subject}"))
+            addView(makeSpanTextView("${resources.getString(R.string.email_content)}: ${barcode.message}"))
+        }
     }
 
     private fun bindSmsContent(barcode: SmsModel) {
@@ -84,12 +78,10 @@ class ScanResultContent : ConstraintLayout {
         binding.scanResultContentType.text = resources.getString(R.string.message)
         binding.scanResultContentDescription.visibility = GONE
 
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.message_tel)}: ${barcode.number}")
-        )
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.message_content)}: ${barcode.message}")
-        )
+        binding.scanResultContentContentContainer.apply {
+            addView(makeSpanTextView("${resources.getString(R.string.message_tel)}: ${barcode.number}"))
+            addView(makeSpanTextView("${resources.getString(R.string.message_content)}: ${barcode.message}"))
+        }
     }
 
     private fun bindTextContent(barcode: TextModel) {
@@ -107,15 +99,11 @@ class ScanResultContent : ConstraintLayout {
         binding.scanResultContentType.text = resources.getString(R.string.wifi)
         binding.scanResultContentDescription.visibility = GONE
 
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.wifi_name)}: ${barcode.ssid}")
-        )
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.wifi_security)}: ${barcode.security}")
-        )
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.wifi_password)}: ${barcode.password}")
-        )
+        binding.scanResultContentContentContainer.apply {
+            addView(makeSpanTextView("${resources.getString(R.string.wifi_name)}: ${barcode.ssid}"))
+            addView(makeSpanTextView("${resources.getString(R.string.wifi_security)}: ${barcode.security}"))
+            addView(makeSpanTextView("${resources.getString(R.string.wifi_password)}: ${barcode.password}"))
+        }
     }
 
     private fun bindCalendarContent(barcode: CalendarModel) {
@@ -123,21 +111,13 @@ class ScanResultContent : ConstraintLayout {
         binding.scanResultContentType.text = resources.getString(R.string.calendar)
         binding.scanResultContentDescription.visibility = GONE
 
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.calendar_subject)}: ${barcode.organizer}")
-        )
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.calendar_start)}: ${barcode.start}")
-        )
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.calendar_end)}: ${barcode.end}")
-        )
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.calendar_note)}: ${barcode.description}")
-        )
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.calendar_address)}: ${barcode.address}")
-        )
+        binding.scanResultContentContentContainer.apply {
+            addView(makeSpanTextView("${resources.getString(R.string.calendar_subject)}: ${barcode.organizer}"))
+            addView(makeSpanTextView("${resources.getString(R.string.calendar_start)}: ${barcode.start}"))
+            addView(makeSpanTextView("${resources.getString(R.string.calendar_end)}: ${barcode.end}"))
+            addView(makeSpanTextView("${resources.getString(R.string.calendar_note)}: ${barcode.description}"))
+            addView(makeSpanTextView("${resources.getString(R.string.calendar_address)}: ${barcode.address}"))
+        }
     }
 
     private fun bindContactContent(barcode: ContactModel) {
@@ -145,21 +125,13 @@ class ScanResultContent : ConstraintLayout {
         binding.scanResultContentType.text = resources.getString(R.string.contacts)
         binding.scanResultContentDescription.visibility = GONE
 
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.contacts_name)}: ${barcode.name}")
-        )
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.contacts_tel)}: ${barcode.phone}")
-        )
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.contacts_email)}: ${barcode.email}")
-        )
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.contacts_address)}: ${barcode.address}")
-        )
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.contacts_url)}: ${barcode.address}")
-        )
+        binding.scanResultContentContentContainer.apply {
+            addView(makeSpanTextView("${resources.getString(R.string.contacts_name)}: ${barcode.name}"))
+            addView(makeSpanTextView("${resources.getString(R.string.contacts_tel)}: ${barcode.phone}"))
+            addView(makeSpanTextView("${resources.getString(R.string.contacts_email)}: ${barcode.email}"))
+            addView(makeSpanTextView("${resources.getString(R.string.contacts_address)}: ${barcode.address}"))
+            addView(makeSpanTextView("${resources.getString(R.string.contacts_url)}: ${barcode.address}"))
+        }
     }
 
     private fun bindGeoContent(barcode: GeoModel) {
@@ -167,12 +139,10 @@ class ScanResultContent : ConstraintLayout {
         binding.scanResultContentType.text = resources.getString(R.string.map)
         binding.scanResultContentDescription.visibility = GONE
 
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.map_long)}: ${barcode.longitude}")
-        )
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.map_lat)}: ${barcode.latitude}")
-        )
+        binding.scanResultContentContentContainer.apply {
+            addView(makeSpanTextView("${resources.getString(R.string.map_long)}: ${barcode.longitude}"))
+            addView(makeSpanTextView("${resources.getString(R.string.map_lat)}: ${barcode.latitude}"))
+        }
     }
 
     private fun bindPhoneContent(barcode: PhoneModel) {
@@ -180,12 +150,10 @@ class ScanResultContent : ConstraintLayout {
         binding.scanResultContentType.text = resources.getString(R.string.telephone)
         binding.scanResultContentDescription.visibility = GONE
 
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.telephone_name)}: ${barcode.name}")
-        )
-        binding.scanResultContentContentContainer.addView(
-            makeSpanTextView("${resources.getString(R.string.telephone_tel)}: ${barcode.number}")
-        )
+        binding.scanResultContentContentContainer.apply {
+            addView(makeSpanTextView("${resources.getString(R.string.telephone_name)}: ${barcode.name}"))
+            addView(makeSpanTextView("${resources.getString(R.string.telephone_tel)}: ${barcode.number}"))
+        }
     }
 
     private fun makeSpanTextView(str: String): TextView {

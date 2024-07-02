@@ -116,5 +116,43 @@
 	<string name="hello_blank_fragment">Hello blank fragment</string>
 	<string name="message_hint">Please input email content</string>
 	<string name="create">Create</string>
+	<string name="link">Link</string>
+	<string name="link_website_hint">Please fill in the website address</string>
+	<string name="name">Name</string>
+	<string name="contact_name_hint">Please fill in the contact name</string>
+	<string name="phone_number">Phone number</string>
+	<string name="phone_number_hint">Please fill in the phone number</string>
+	<string name="contact_email_hint">Please fill in the email</string>
+	<string name="telephone_phone_number_hint">Please enter your phone number</string>
+	<string name="recipient_number">Recipient number</string>
+	<string name="recipient_number_hint">Please fill in the recipient number</string>
+	<string name="message_message_hint">Please input message content</string>
+	<string name="business_card_name_hint">Please enter your name</string>
+	<string name="business_card_phone_number_hint">Please enter your phone number</string>
+	<string name="e_mail">E-mail</string>
+	<string name="business_card_e_mail_hint">Please enter your mail</string>
+	<string name="address">Address</string>
+	<string name="address_hint">Please enter your address</string>
+	<string name="birthday">Birthday</string>
+	<string name="company">Company</string>
+	<string name="company_hint">Please enter your company address</string>
+	<string name="description">Description</string>
+	<string name="default_hint">Please enter something</string>
+	<string name="username">Username</string>
+	<string name="create_qr_detail_whatsapp_note">Others can contact you directly on WhatsApp by scanning the QR code you
+		create.
+	</string>
+	<string name="url">URL</string>
+	<string name="content">Content</string>
+	<string name="network_name">Network name</string>
+	<string name="ssid_hint">Please fill in the SSID</string>
+	<string name="security_mode">Security mode</string>
+	<string name="none">None</string>
+	<string name="password">Password</string>
+	<string name="password_hint">Please fill in the password</string>
+	<string name="content_hint">Please fill in the content</string>
+	<string name="title">Title</string>
+	<string name="calendar_title_hint">Please enter event title</string>
+	<string name="all_day">All day</string>
 
 </resources>

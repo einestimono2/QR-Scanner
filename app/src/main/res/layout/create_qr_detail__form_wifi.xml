@@ -3,14 +3,14 @@
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:tools="http://schemas.android.com/tools"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
+		android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
 		android:orientation="vertical"
 		android:paddingHorizontal="16dp"
 >
 	<ImageView
 			android:layout_width="72dp"
 			android:layout_height="72dp"
-			android:src="@drawable/ic_scan_result_email"
+			android:src="@drawable/ic_scan_result_wifi"
 			android:layout_marginTop="24dp"
 			android:layout_gravity="center"
 			android:contentDescription="@string/default_contentDescription"
@@ -19,7 +19,7 @@
 	<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/email_address"
+			android:text="@string/network_name"
 			android:textColor="@color/neutral"
 			android:fontFamily="@font/inter_600_semi_bold"
 			android:textSize="14sp"
@@ -33,7 +33,7 @@
 			android:inputType="textEmailAddress"
 			android:ems="10"
 			android:id="@+id/createQrDetailFragmentFormEmail_email"
-			android:hint="@string/email_hint"
+			android:hint="@string/ssid_hint"
 			android:background="@drawable/selector_input_field"
 			android:paddingHorizontal="16dp"
 			android:paddingVertical="14dp"
@@ -46,7 +46,7 @@
 	<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/calendar_subject"
+			android:text="@string/security_mode"
 			android:textColor="@color/neutral"
 			android:fontFamily="@font/inter_600_semi_bold"
 			android:textSize="14sp"
@@ -54,27 +54,45 @@
 			android:layout_marginBottom="8dp"
 	/>
 	
-	<EditText
+	<com.google.android.material.tabs.TabLayout
+			android:id="@+id/createQrDetailFragmentFormSocial_option"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:inputType="none"
-			android:ems="10"
-			android:id="@+id/createQrDetailFragmentFormEmail_subject"
-			android:hint="@string/subject_hint"
-			android:background="@drawable/selector_input_field"
-			android:paddingHorizontal="16dp"
-			android:paddingVertical="14dp"
-			android:fontFamily="@font/inter_500_medium"
-			android:textSize="14sp"
-			android:textCursorDrawable="@drawable/cusor_primary"
-			android:autofillHints=""
-			tools:ignore="TextFields"
-	/>
+			
+			android:background="@drawable/bg_white_corner_32"
+			app:tabMode="fixed"
+			app:tabGravity="fill"
+			app:tabIndicator="@drawable/bg_primary_corner_32"
+			app:tabIndicatorFullWidth="true"
+			app:tabIndicatorGravity="stretch"
+			app:tabIndicatorColor="@color/primary"
+			app:tabTextColor="@drawable/selector_white_black"
+	>
+		<com.google.android.material.tabs.TabItem
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="WPA/WPA2"
+				tools:ignore="HardcodedText"
+		/>
+		
+		<com.google.android.material.tabs.TabItem
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="WEP"
+				tools:ignore="HardcodedText"
+		/>
+		
+		<com.google.android.material.tabs.TabItem
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="@string/none"
+		/>
+	</com.google.android.material.tabs.TabLayout>
 	
 	<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/message"
+			android:text="@string/password"
 			android:textColor="@color/neutral"
 			android:fontFamily="@font/inter_600_semi_bold"
 			android:textSize="14sp"
@@ -88,7 +106,7 @@
 			android:inputType="none"
 			android:ems="10"
 			android:id="@+id/createQrDetailFragmentFormEmail_message"
-			android:hint="@string/message_hint"
+			android:hint="@string/password_hint"
 			android:background="@drawable/selector_input_field"
 			android:paddingHorizontal="16dp"
 			android:paddingVertical="14dp"

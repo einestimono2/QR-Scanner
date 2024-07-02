@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:paddingHorizontal="16dp"
+>
+	<ImageView
+			android:layout_width="72dp"
+			android:layout_height="72dp"
+			android:src="@drawable/ic_bussiness_card"
+			android:layout_marginTop="24dp"
+			android:layout_gravity="center"
+			android:contentDescription="@string/default_contentDescription"
+	/>
+	
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/name"
+			android:textColor="@color/neutral"
+			android:fontFamily="@font/inter_600_semi_bold"
+			android:textSize="14sp"
+			android:layout_marginTop="24dp"
+			android:layout_marginBottom="8dp"
+	/>
+	
+	<EditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:id="@+id/createQrDetailBusinessCard_name"
+			android:hint="@string/business_card_name_hint"
+			android:background="@drawable/selector_input_field"
+			android:paddingHorizontal="16dp"
+			android:paddingVertical="14dp"
+			android:fontFamily="@font/inter_500_medium"
+			android:textSize="14sp"
+			android:textCursorDrawable="@drawable/cusor_primary"
+			android:autofillHints=""
+			android:inputType="text"
+	/>
+	
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/phone_number"
+			android:textColor="@color/neutral"
+			android:fontFamily="@font/inter_600_semi_bold"
+			android:textSize="14sp"
+			android:layout_marginTop="16dp"
+			android:layout_marginBottom="8dp"
+	/>
+	
+	<EditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:id="@+id/createQrDetailBusinessCard_phoneNumber"
+			android:hint="@string/business_card_phone_number_hint"
+			android:background="@drawable/selector_input_field"
+			android:paddingHorizontal="16dp"
+			android:paddingVertical="14dp"
+			android:fontFamily="@font/inter_500_medium"
+			android:textSize="14sp"
+			android:textCursorDrawable="@drawable/cusor_primary"
+			android:autofillHints="phone"
+			android:inputType="phone"
+	/>
+	
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/e_mail"
+			android:textColor="@color/neutral"
+			android:fontFamily="@font/inter_600_semi_bold"
+			android:textSize="14sp"
+			android:layout_marginTop="16dp"
+			android:layout_marginBottom="8dp"
+	/>
+	
+	<EditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="textEmailAddress"
+			android:ems="10"
+			android:id="@+id/createQrDetailBusinessCard_mail"
+			android:hint="@string/business_card_e_mail_hint"
+			android:background="@drawable/selector_input_field"
+			android:paddingHorizontal="16dp"
+			android:paddingVertical="14dp"
+			android:fontFamily="@font/inter_500_medium"
+			android:textSize="14sp"
+			android:textCursorDrawable="@drawable/cusor_primary"
+			android:autofillHints="emailAddress"
+	/>
+	
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/address"
+			android:textColor="@color/neutral"
+			android:fontFamily="@font/inter_600_semi_bold"
+			android:textSize="14sp"
+			android:layout_marginTop="16dp"
+			android:layout_marginBottom="8dp"
+	/>
+	
+	<EditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="none"
+			android:ems="10"
+			android:id="@+id/createQrDetailBusinessCard_address"
+			android:hint="@string/address_hint"
+			android:background="@drawable/selector_input_field"
+			android:paddingHorizontal="16dp"
+			android:paddingVertical="14dp"
+			android:fontFamily="@font/inter_500_medium"
+			android:textSize="14sp"
+			android:textCursorDrawable="@drawable/cusor_primary"
+			android:autofillHints=""
+	/>
+	
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/birthday"
+			android:textColor="@color/neutral"
+			android:fontFamily="@font/inter_600_semi_bold"
+			android:textSize="14sp"
+			android:layout_marginTop="16dp"
+			android:layout_marginBottom="8dp"
+	/>
+	
+	<EditText
+			android:id="@+id/createQrDetailBusinessCard_birthday"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="date"
+			android:ems="10"
+			android:hint="Mar 13, 2024"
+			android:background="@drawable/selector_input_field"
+			android:paddingHorizontal="16dp"
+			android:paddingVertical="14dp"
+			android:fontFamily="@font/inter_500_medium"
+			android:textSize="14sp"
+			android:textCursorDrawable="@drawable/cusor_primary"
+			android:autofillHints=""
+			tools:ignore="HardcodedText"
+	/>
+	
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/company"
+			android:textColor="@color/neutral"
+			android:fontFamily="@font/inter_600_semi_bold"
+			android:textSize="14sp"
+			android:layout_marginTop="16dp"
+			android:layout_marginBottom="8dp"
+	/>
+	
+	<EditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="none"
+			android:ems="10"
+			android:id="@+id/createQrDetailBusinessCard_company"
+			android:hint="@string/company_hint"
+			android:background="@drawable/selector_input_field"
+			android:paddingHorizontal="16dp"
+			android:paddingVertical="14dp"
+			android:fontFamily="@font/inter_500_medium"
+			android:textSize="14sp"
+			android:textCursorDrawable="@drawable/cusor_primary"
+			android:autofillHints=""
+	/>
+	
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/description"
+			android:textColor="@color/neutral"
+			android:fontFamily="@font/inter_600_semi_bold"
+			android:textSize="14sp"
+			android:layout_marginTop="16dp"
+			android:layout_marginBottom="8dp"
+	/>
+	
+	<EditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="textMultiLine"
+			android:ems="10"
+			android:minLines="4"
+			android:id="@+id/createQrDetailBusinessCard_description"
+			android:hint="@string/default_hint"
+			android:background="@drawable/selector_input_field"
+			android:paddingHorizontal="16dp"
+			android:paddingVertical="14dp"
+			android:fontFamily="@font/inter_500_medium"
+			android:textSize="14sp"
+			android:textCursorDrawable="@drawable/cusor_primary"
+			android:autofillHints=""
+			android:gravity="top|start"
+	/>
+
+</LinearLayout>

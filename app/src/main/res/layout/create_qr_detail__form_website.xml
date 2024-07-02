@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:paddingHorizontal="16dp"
+>
+	<ImageView
+			android:layout_width="72dp"
+			android:layout_height="72dp"
+			android:src="@drawable/ic_scan_result_website"
+			android:layout_marginTop="24dp"
+			android:layout_gravity="center"
+			android:contentDescription="@string/default_contentDescription"
+	/>
+	
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/link"
+			android:textColor="@color/neutral"
+			android:fontFamily="@font/inter_600_semi_bold"
+			android:textSize="14sp"
+			android:layout_marginTop="24dp"
+			android:layout_marginBottom="16dp"
+	/>
+	
+	<EditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="textUri"
+			android:ems="10"
+			android:id="@+id/createQrDetailFragmentFormWebsite_link"
+			android:hint="@string/link_website_hint"
+			android:background="@drawable/selector_input_field"
+			android:paddingHorizontal="16dp"
+			android:paddingVertical="14dp"
+			android:fontFamily="@font/inter_500_medium"
+			android:textSize="14sp"
+			android:textCursorDrawable="@drawable/cusor_primary"
+			android:autofillHints=""
+	/>
+	
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Example: https://qrcode.com"
+			android:layout_marginTop="4dp"
+			android:drawablePadding="8dp"
+			app:drawableEndCompat="@drawable/ic_copy_2"
+			tools:ignore="HardcodedText"
+			android:fontFamily="@font/inter_500_medium"
+			android:textSize="12sp"
+	/>
+
+	<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:layout_marginTop="16dp"
+	>
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/inter_500_medium"
+				android:textSize="14sp"
+				android:text="http://"
+				tools:ignore="HardcodedText"
+				android:paddingHorizontal="16dp"
+				android:paddingVertical="8dp"
+				android:background="@drawable/bg_white_corner_8"
+		/>
+		
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/inter_500_medium"
+				android:textSize="14sp"
+				android:text="https://"
+				tools:ignore="HardcodedText"
+				android:paddingHorizontal="16dp"
+				android:paddingVertical="8dp"
+				android:background="@drawable/bg_white_corner_8"
+				android:layout_marginStart="8dp"
+		/>
+		
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/inter_500_medium"
+				android:textSize="14sp"
+				android:text="www."
+				tools:ignore="HardcodedText"
+				android:paddingHorizontal="16dp"
+				android:paddingVertical="8dp"
+				android:background="@drawable/bg_white_corner_8"
+				android:layout_marginStart="8dp"
+		/>
+		
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/inter_500_medium"
+				android:textSize="14sp"
+				android:text=".com"
+				tools:ignore="HardcodedText"
+				android:paddingHorizontal="16dp"
+				android:paddingVertical="8dp"
+				android:background="@drawable/bg_white_corner_8"
+				android:layout_marginStart="8dp"
+		/>
+	</LinearLayout>
+
+</LinearLayout>

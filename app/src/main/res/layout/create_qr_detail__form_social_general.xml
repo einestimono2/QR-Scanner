@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:orientation="vertical"
+		android:paddingHorizontal="16dp"
+>
+	<ImageView
+			android:id="@+id/createQrDetailFragmentFormSocial_icon"
+			android:layout_width="72dp"
+			android:layout_height="72dp"
+			android:src="@drawable/ic_whatsapp"
+			android:layout_marginTop="24dp"
+			android:layout_gravity="center"
+			android:contentDescription="@string/default_contentDescription"
+	/>
+	
+	<com.google.android.material.tabs.TabLayout
+			android:id="@+id/createQrDetailFragmentFormSocial_option"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="24dp"
+			android:layout_marginBottom="16dp"
+			
+			android:background="@drawable/bg_white_corner_32"
+			app:tabMode="fixed"
+			app:tabGravity="fill"
+			app:tabIndicator="@drawable/bg_primary_corner_32"
+			app:tabIndicatorFullWidth="true"
+			app:tabIndicatorGravity="stretch"
+			app:tabIndicatorColor="@color/primary"
+			app:tabTextColor="@drawable/selector_white_black"
+	>
+		<com.google.android.material.tabs.TabItem
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="Facebook ID"
+				tools:ignore="HardcodedText"
+		/>
+		
+		<com.google.android.material.tabs.TabItem
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="@string/url"
+		/>
+	</com.google.android.material.tabs.TabLayout>
+	
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/content"
+			android:textColor="@color/neutral"
+			android:fontFamily="@font/inter_600_semi_bold"
+			android:textSize="14sp"
+			android:layout_marginBottom="8dp"
+	/>
+	
+	<EditText
+			android:id="@+id/createQrDetailFragmentFormSocial_content"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:hint="Enter Facebook ID"
+			android:background="@drawable/selector_input_field"
+			android:paddingHorizontal="16dp"
+			android:paddingVertical="14dp"
+			android:fontFamily="@font/inter_500_medium"
+			android:textSize="14sp"
+			android:textCursorDrawable="@drawable/cusor_primary"
+			android:autofillHints="phone"
+			android:inputType="phone"
+			tools:ignore="HardcodedText"
+	/>
+
+</LinearLayout>
