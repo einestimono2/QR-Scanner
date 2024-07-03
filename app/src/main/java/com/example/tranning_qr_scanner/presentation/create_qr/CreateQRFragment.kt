@@ -3,8 +3,6 @@ package com.example.tranning_qr_scanner.presentation.create_qr
 import android.view.View
 import com.example.tranning_qr_scanner.databinding.CreateQrFragmentBinding
 import com.example.tranning_qr_scanner.presentation.base.BaseFragment
-import com.example.tranning_qr_scanner.presentation.scan_qr.ScanQRFragmentDirections
-import timber.log.Timber
 
 class CreateQRFragment : BaseFragment<CreateQrFragmentBinding, Nothing>() {
     override fun inflateLayout() = CreateQrFragmentBinding.inflate(layoutInflater)

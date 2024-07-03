@@ -18,7 +18,6 @@ class LanguageFragment : BaseFragment<LanguageFragmentBinding, LanguageViewModel
     lateinit var cacheHelper: AppCache
 
     override val viewModelClass = LanguageViewModel::class.java
-
     override fun inflateLayout() = LanguageFragmentBinding.inflate(layoutInflater)
 
     override fun bind() {

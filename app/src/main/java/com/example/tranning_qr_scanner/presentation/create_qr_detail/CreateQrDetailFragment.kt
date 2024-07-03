@@ -1,31 +1,39 @@
 package com.example.tranning_qr_scanner.presentation.create_qr_detail
 
-import android.view.LayoutInflater
 import android.view.View.GONE
 import androidx.navigation.fragment.navArgs
 import com.example.tranning_qr_scanner.R
 import com.example.tranning_qr_scanner.core.utils.extension.shortToast
 import com.example.tranning_qr_scanner.databinding.CreateQrDetailFragmentBinding
 import com.example.tranning_qr_scanner.presentation.base.BaseFragment
+import com.example.tranning_qr_scanner.presentation.create_qr_detail.contents.*
+import com.example.tranning_qr_scanner.presentation.language.LanguageViewModel
 import com.google.android.material.tabs.TabLayout
+import timber.log.Timber
 import kotlin.properties.Delegates
 
-class CreateQrDetailFragment : BaseFragment<CreateQrDetailFragmentBinding, Nothing>() {
+class CreateQrDetailFragment : BaseFragment<CreateQrDetailFragmentBinding, CreateQrDetailViewModel>() {
     override fun inflateLayout() = CreateQrDetailFragmentBinding.inflate(layoutInflater)
+    override val viewModelClass = CreateQrDetailViewModel::class.java
 
     private val args: CreateQrDetailFragmentArgs by navArgs()
     private var type by Delegates.notNull<Int>()
 
-
     override fun bind() {
         type = args.id
 
-        binding.createQRFragAppBarTitle.setNavigationOnClickListener {
-            pop()
+        binding.createQRFragAppBarTitle.setNavigationOnClickListener { pop() }
+        viewModel.canCreate.observe(this) {
+            Timber.v(it.toString())
+            binding.createQrDetailFragmentBtn.isEnabled = it
         }
 
         //! TODO: HARDCODED STRING
         initContent()
+
+        binding.createQrDetailFragmentBtn.setOnClickListener {
+            handleClick()
+        }
     }
 
     private fun initContent() {
@@ -83,28 +91,22 @@ class CreateQrDetailFragment : BaseFragment<CreateQrDetailFragmentBinding, Nothi
             })
         }
 
-        LayoutInflater.from(context).let {
-            binding.createQrDetailFragmentContent.apply {
-                addView(it.inflate(R.layout.create_qr_detail__form_email, this, false))
-                addView(it.inflate(R.layout.create_qr_detail__form_website, this, false))
-                addView(it.inflate(R.layout.create_qr_detail__form_contact, this, false))
-                addView(it.inflate(R.layout.create_qr_detail__form_telephone, this, false))
-                addView(it.inflate(R.layout.create_qr_detail__form_message, this, false))
-            }
+        binding.createQrDetailFragmentContent.apply {
+            addView(CreateQrEmail(context))
+            addView(CreateQrWebsite(context))
+            addView(CreateQrContact(context))
+            addView(CreateQrTelephone(context))
+            addView(CreateQrMessage(context))
         }
+
     }
 
     private fun initBusinessCardContent() {
         binding.createQRFragAppBarTitle.title = "Create My Card"
-
         binding.createQRFragTabs.visibility = GONE
 
         binding.createQrDetailFragmentContent.addView(
-            LayoutInflater.from(context).inflate(
-                R.layout.create_qr_detail__form_business_card,
-                binding.createQrDetailFragmentContent,
-                false
-            )
+            CreateQrBusinessCard(requireContext())
         )
     }
 
@@ -132,11 +134,9 @@ class CreateQrDetailFragment : BaseFragment<CreateQrDetailFragmentBinding, Nothi
             })
         }
 
-        LayoutInflater.from(context).let {
-            binding.createQrDetailFragmentContent.apply {
-                addView(it.inflate(R.layout.create_qr_detail__form_whatsapp, this, false))
-                addView(it.inflate(R.layout.create_qr_detail__form_social_general, this, false))
-            }
+        binding.createQrDetailFragmentContent.apply {
+            addView(CreateQrWhatsapp(context))
+            addView(CreateQrSocial(context))
         }
     }
 
@@ -159,12 +159,14 @@ class CreateQrDetailFragment : BaseFragment<CreateQrDetailFragmentBinding, Nothi
             })
         }
 
-        LayoutInflater.from(context).let {
-            binding.createQrDetailFragmentContent.apply {
-                addView(it.inflate(R.layout.create_qr_detail__form_wifi, this, false))
-                addView(it.inflate(R.layout.create_qr_detail__form_text, this, false))
-                addView(it.inflate(R.layout.create_qr_detail__form_calendar, this, false))
-            }
+        binding.createQrDetailFragmentContent.apply {
+            addView(CreateQrWifi(context))
+            addView(CreateQrText(context))
+            addView(CreateQrCalendar(context))
         }
+    }
+
+    private fun handleClick() {
+        (binding.createQrDetailFragmentContent.currentView as CreateQrEmail).handleCreateQr()
     }
 }

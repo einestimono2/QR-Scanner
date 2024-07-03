@@ -7,7 +7,6 @@ import com.example.tranning_qr_scanner.core.utils.BarcodeType
 import com.example.tranning_qr_scanner.core.utils.Constants.SCAN_RESULT_ACTION_MAX_SPAN_COUNT
 import com.example.tranning_qr_scanner.core.utils.ContactType
 import com.example.tranning_qr_scanner.presentation.scan_result.ScanResultActionModel
-import timber.log.Timber
 
 data class EmailModel(
     override val format: BarcodeFormat,

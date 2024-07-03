@@ -4,9 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.Window
-import com.example.tranning_qr_scanner.R
 import com.example.tranning_qr_scanner.databinding.NoPermissionDialogBinding
-import timber.log.Timber
 
 object DialogUtils {
     fun noPermissionDialog(context: Context, onDeny: () -> Unit, onAllow: () -> Unit) {

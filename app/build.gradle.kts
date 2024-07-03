@@ -91,6 +91,9 @@ dependencies {
 
     /* MY_CUSTOM: Timber Logging*/
     implementation("com.jakewharton.timber:timber:5.0.1")
+
+    /* MY_CUSTOM: zxing - QR code generation*/
+    implementation("com.google.zxing:core:3.4.1")
 }
 
 /* MY_CUSTOM: Dagger Hilt */
